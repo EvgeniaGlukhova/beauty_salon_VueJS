@@ -49,6 +49,11 @@ export default {
 <template>
   <header>
     <nav>
+      <ul>
+        <li><router-link to="/">Услуги</router-link></li>
+        <li><router-link to="/cosmetologists">Косметологи</router-link></li>
+        <li><router-link to="/appointments">Записи</router-link></li>
+      </ul>
       <div v-if="isAuthenticated && user">
         Welcome, {{ user.name}}
         <button @click="logout">Logout</button>
@@ -69,6 +74,7 @@ export default {
       </div>
     </nav>
   </header>
+  <router-view></router-view>
 </template>
 
 <style scoped>
