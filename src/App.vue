@@ -14,8 +14,8 @@ export default {
       items: [
         //
         {
-          label: 'Главная страница',
-          icon: 'pi pi-fw pi-home',
+          label: 'Список услуг',
+          icon: 'pi pi-fw pi-list',
           route: '/',
           shortcut: 'Ctrl + H',
           submenu: [
@@ -24,12 +24,12 @@ export default {
         },
         {
           label: 'Косметологи',
-          icon: 'pi pi-fw pi-folder',
+          icon: 'pi pi-fw pi-user',
           route: '/cosmetologists',
         },
         {
           label: 'Записи',
-          icon: 'pi pi-fw pi-box',
+          icon: 'pi pi-fw pi-calendar',
           route: '/appointments',
         },
       ],
