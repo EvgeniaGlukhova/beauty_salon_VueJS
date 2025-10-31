@@ -15,7 +15,10 @@ export const useDataStore = defineStore('data', {
     appointments_total: null,
 
     errorMessage: "",
+    errorCode: "",
   }),
+
+
   actions: {
     async get_services(page = 0, perpage = 5) {
       this.errorMessage = "";
@@ -95,7 +98,6 @@ export const useDataStore = defineStore('data', {
       }
     },
 
-    // --- ЗАПИСИ ---
     async get_appointments(page = 0, perpage = 5) {
       this.errorMessage = "";
       try {
@@ -134,6 +136,36 @@ export const useDataStore = defineStore('data', {
           console.log(error);
         }
       }
+    },
+
+    async create_service(formData){
+      this.errorMessage = "";
+      try {
+        const response = await axios.post(backendUrl + '/service', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+            Authorization: 'Bearer ' + localStorage.getItem('token')
+          },
+        }
+        );
+        this.errorCode = response.data.code;
+        this.errorMessage = response.data.message;
+      } catch (error) {
+        if (error.response) {
+          this.errorMessage = error.response.data.message;
+          this.errorCode = 11;
+          console.log(error);
+        } else if (error.request) {
+          this.errorMessage = error.message;
+          this.errorCode = 12;
+          console.log(error);
+        } else {
+          this.errorCode = 13;
+          console.log(error);
+
+        }
+      }
+
     },
 
   }

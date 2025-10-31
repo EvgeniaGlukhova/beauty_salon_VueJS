@@ -3,9 +3,13 @@ import { useAuthStore } from '@/stores/authStore';
 import Button from "primevue/button";
 import Menubar from "primevue/menubar";
 import InputText from "primevue/inputtext";
+import Toast from 'primevue/toast';
+
+
+
 
 export default {
-  components: {Button, Menubar, InputText},
+  components: {Button, Menubar, InputText, Toast},
   data() {
     return {
       email: '',
@@ -32,6 +36,7 @@ export default {
           icon: 'pi pi-fw pi-calendar',
           route: '/appointments',
         },
+
       ],
     };
   },
@@ -111,6 +116,7 @@ export default {
   </Menubar>
 
   <router-view></router-view>
+  <Toast position="bottom-right" />
 </template>
 
 <style scoped>
